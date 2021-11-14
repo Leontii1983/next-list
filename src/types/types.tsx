@@ -7,9 +7,10 @@ export interface IItem {
       url: string
     }
   },
-	colorFamily:[ {
+	colorFamily:[ 
+		{
     name: string
-  } 
+    } 
  ],
 	categoryTags: string[],
 	shopifyProductEu: {

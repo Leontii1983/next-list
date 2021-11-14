@@ -7,13 +7,14 @@ import Image from 'next/image';
 type Props = {
   items: IItem[],
   children?: ReactChildren | ReactNode,
- 
+  num: number
 };
 
 
 
 const ItemList = ( { items } : Props): JSX.Element  => {
   const [data, setData] = useState<IItem[]>(items);
+
    
    useEffect(()=>{
      if(items.length != 0){
@@ -22,21 +23,23 @@ const ItemList = ( { items } : Props): JSX.Element  => {
    }, [items]);
   console.log(items);
 
- return(
-   <>
-     {data.map((item)=> {
-       `<li>${item.node.name}</li>
-       <li>${item.node.node_locale}</li>
-       <li><Image 
-            src =${item.node.thumbnailImage.file.url} 
-            alt="Picture of the author"
-            width={200}
-            height={200}
-            />
-       </li>`;
-     })}
-    </>
- );
+  return(
+    <>
+      {data.map((item, i) => (
+        <div key={i}>
+          <li>{item.node.name}</li>
+          <li>{item.node.node_locale}</li>
+          <li>
+           <Image
+               src={`http:${item.node.thumbnailImage.file.url}`}
+               alt="Picture of the author"
+               width={200}
+               height={200}
+           /></li>
+        </div>
+      ))}
+     </>
+  );
 
 };
 

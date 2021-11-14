@@ -12,7 +12,7 @@ const Home = ( { items } : Props): JSX.Element => {
    
   return(
     <>
-    <h3>Leo here</h3>
+    <h3>Items list</h3>
     <ul>
     <ItemList  items ={ items } />
     </ul>
